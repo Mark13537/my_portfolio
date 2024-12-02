@@ -33,7 +33,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final welomeTxt =
-      'Konnichiwa! I\'m Mitul Desai, 5 years experienced mobile app developer. Aspiring to advance as an Application Architect with comprehensive knowledge of clean coding practices, data structures and algorithms. Portfolio is under construction.';
+      'Konnichiwa! I\'m Mitul Desai, 5 years experienced mobile app developer. Aspiring to advance as an Application Architect with comprehensive knowledge of clean coding practices, data structures and algorithms.\nPortfolio is under construction.';
 
   @override
   Widget build(BuildContext context) {
