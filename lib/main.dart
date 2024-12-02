@@ -32,6 +32,9 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  final welomeTxt =
+      'Konnichiwa! I\'m Mitul Desai, 5 years experienced mobile app developer. Aspiring to advance as an Application Architect with comprehensive knowledge of clean coding practices, data structures and algorithms. Portfolio is under construction.';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,49 +44,50 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             const Spacer(),
             Text(
-              'Moshi moshi! Portfolio is under construction.',
+              welomeTxt,
               style: TextStyle(
-                  fontSize: MediaQuery.of(context).size.height * 0.03),
+                  fontSize: MediaQuery.of(context).size.height * 0.04),
             ),
-            const Icon(Icons.construction),
+            const Icon(
+              Icons.construction,
+              size: 30,
+            ),
             const Spacer(),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                IconButton(
-                    onPressed: () async {
-                      final Uri url =
-                          Uri.parse('https://www.linkedin.com/in/desai-mitul/');
-                      await launchUrl(url,
-                          mode: LaunchMode.externalApplication);
-                    },
-                    icon: const Icon(
-                      FontAwesomeIcons.linkedin,
-                      size: 30,
-                    )),
-                IconButton(
-                    onPressed: () async {
-                      final Uri url = Uri.parse('https://github.com/Mark13537');
-                      await launchUrl(url);
-                    },
-                    icon: const Icon(
-                      FontAwesomeIcons.github,
-                      size: 30,
-                    )),
-                IconButton(
-                    onPressed: () async {
-                      final Uri url =
-                          Uri.parse('mailto:mitul.desai@outlook.com');
-                      await launchUrl(url);
-                    },
-                    icon: const Icon(
-                      Icons.email,
-                      size: 30,
-                    ))
+                buildSocialBtn(
+                  urlStr: 'https://www.linkedin.com/in/desai-mitul/',
+                  icon: FontAwesomeIcons.linkedin,
+                ),
+                buildSocialBtn(
+                  urlStr: 'https://github.com/Mark13537',
+                  icon: FontAwesomeIcons.github,
+                ),
+                buildSocialBtn(
+                  urlStr: 'mailto:mitul.desai@outlook.com',
+                  icon: Icons.email,
+                ),
               ],
             )
           ],
         ),
+      ),
+    );
+  }
+
+  IconButton buildSocialBtn({
+    required final String urlStr,
+    required final IconData icon,
+  }) {
+    return IconButton(
+      onPressed: () async {
+        final Uri url = Uri.parse(urlStr);
+        await launchUrl(url, mode: LaunchMode.externalApplication);
+      },
+      icon: Icon(
+        icon,
+        size: 30,
       ),
     );
   }
