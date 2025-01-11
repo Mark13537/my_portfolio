@@ -4,10 +4,11 @@ import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import 'firebase_options.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
-  await FirebaseAnalytics.instance.logEvent(name: 'Launching portfolio');
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const MyApp());
 }
 
@@ -39,6 +40,12 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   final welomeTxt =
       'Konnichiwa! I\'m Mitul Desai, 5 years experienced mobile app developer. Aspiring to advance as an Application Architect with comprehensive knowledge of clean coding practices, data structures and algorithms.\nPortfolio is under construction.';
+
+  @override
+  void initState() {
+    super.initState();
+    FirebaseAnalytics.instance.logEvent(name: 'Launching portfolio');
+  }
 
   @override
   Widget build(BuildContext context) {
